@@ -1,0 +1,767 @@
+/*
+Theme Name: MyTheme
+Theme URI:
+Description:
+Version: 1
+Author:
+Author URI:
+*/
+
+@mixin btn {
+  background-color: #FF3300;
+  width: 18rem;
+  height: 7rem;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+@mixin btn-mini {
+  background-color: #FF3300;
+  width: 9rem;
+  height: 3rem;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+@mixin btn-txt {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 3rem;
+  padding: 1rem;
+}
+
+@mixin btn-txt-mini {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+@mixin btn-hover {
+  background-color: rgba($color: rgb(245, 104, 69), $alpha: 1.0); 
+  transition: 0.5s;
+  box-shadow: 0 2px 10px 0 #9E9E9E;
+}
+
+@mixin category {
+  text-decoration: none;
+  color: #212529;
+}
+
+@mixin category-hover {
+  color: #FF3300;
+}
+
+$layout-width-inner: 1180px;
+
+$breakpoints: (
+  "sp": "screen and (max-width: 767px)",
+  "tab": "screen and (max-width: #{$layout-width-inner - 1px})",
+  "pc": "screen and (min-width: #{$layout-width-inner})",
+);
+
+@mixin mq($breakpoint: sp) {
+
+  @media #{map-get($breakpoints, $breakpoint)} {
+
+    @content;
+  }
+}
+
+//★★★全ページ共通★★★//
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 3rem;
+}
+
+// ナビゲーションバー始まり//
+nav {
+  background-color: darken($color: #000000, $amount: 0);
+  padding: 0.8rem;
+  font-size: 4rem;
+  @include mq('tab') {
+    font-size: 3rem;
+  }
+  @include mq('sp') {
+    font-size: 2.5rem;
+  }
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      @include mq('tab') {
+        padding-left: 0;
+      }
+      @include mq('sp') {
+        display: flex;
+        flex-wrap: wrap;
+      }  
+
+        li {
+          margin: 0 2rem;
+          list-style: none;
+          color: #ffffff;
+          @include mq('sp') {
+            margin: 0 1rem;
+          }
+
+          &:hover {
+            transform: scale(1.2,1.2);
+            transition: 0.5s;
+          }
+        }
+
+        a {
+          text-decoration: none;
+          color: #ffffff;
+
+          &:hover {
+            color: #FF3300;
+            cursor: pointer;
+            text-decoration: none;
+          }
+        }
+    }
+}
+// ナビゲーションバー終わり//
+
+// footer //
+footer {
+  text-align: center;
+  margin-top: auto;
+  
+  small {
+  display: inline-block;
+  font-size: 2rem;
+  padding: 2rem;
+  color: rgb(63, 65, 65);
+  }
+}
+// footer //
+//★★★全ページ共通★★★//
+
+// ①ホームページ//
+#index {
+  margin-right:10rem;
+  margin-left:10rem;
+  @include mq('sp') {
+    margin-right: 3rem;
+    margin-left: 3rem;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 5rem;
+    border-bottom: 1px solid #d1d1d1;
+    @include mq('sp') {
+      font-size: 4rem;
+    }
+  }
+}
+// home始まり(home画像)//
+#home {
+  position: relative;
+  
+  img {
+    max-width: 100%;
+    object-fit: contain;
+
+  }
+
+  #pic-title {
+    position: absolute;
+    color: #FFFFFF;
+    top: 78%;
+    left: 7%;
+    font-size: 7rem;
+    @include mq('tab') {
+      font-size: 4rem;
+    }
+    @include mq('sp') {
+      font-size: 3rem;
+      top: 78%;
+      left: 3%;
+    }
+
+  }
+} 
+// home終わり(home画像)// 
+// intro始まり(Webサイトの挨拶）//
+#intro {
+  margin: 8rem 0; 
+  text-align: center;
+
+  p {
+    margin-top: 3rem;
+    font-size: 3rem;
+    line-height: 4rem;
+    @include mq('tab') {
+      line-height: 4rem;;
+    }
+    @include mq('sp') {
+      font-size: 2rem;
+    }
+  }
+}
+
+#aboutme {
+  text-align: center;
+
+  p {
+    margin-top: 3rem;
+    font-size: 3rem;
+    line-height: 4rem;
+    @include mq('tab') {
+      line-height: 4rem;;
+    }
+    @include mq('sp') {
+      font-size: 2rem;
+    }
+  }
+
+  a {
+    margin-top: 3rem;
+    @include btn;
+    @include btn-txt;
+    &:hover {
+      @include btn-hover;
+    }
+  }
+}
+
+#article {
+  margin-top: 8rem;
+  text-align: center;
+  .row {
+    margin: 3rem 0;
+
+    h3 {
+      font-size: 2.5rem;
+      @include mq('sp') {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      font-size: 1.6rem;
+      line-height: 3rem;
+    }
+    
+    a {
+      &:hover {
+        transition: 0.7s;
+        box-shadow: 0 2px 10px 0 #9E9E9E;
+        opacity: 0.7;    
+      }
+    }
+    
+    .category-btn {
+      text-align: left;
+      
+      a {
+        text-align: center;
+        @include btn-mini;
+        @include btn-txt-mini;
+        &:hover {
+          @include btn-hover;
+        }
+      }
+    }
+  }
+  .blog-btn {
+    @include btn;
+    @include btn-txt;
+    &:hover {
+      @include btn-hover;
+    }
+  }   
+}
+
+#footer {
+  margin-top: 8rem;
+  margin-bottom: 5rem;
+  text-align: center;
+  font-size: 1.6rem;
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .miniprof {
+    img {
+      margin-bottom: 2rem;
+    }
+    p {
+      line-height: 3rem;
+    }
+    a {
+      @include btn-mini;
+      @include btn-txt-mini;
+      &:hover {
+        @include btn-hover;
+      }
+    }
+  }
+  .category {
+    
+    ul {
+      padding-left: 1rem;
+      
+      li {
+        list-style: none;
+        border-bottom: 1px dashed #CCCCCC;
+        margin-top: 1rem;
+        font-size: 2rem;
+      }
+    }
+      
+    a {
+      @include category;
+
+      &:hover {
+        @include category-hover;
+      }
+    }
+  }  
+}
+// intro終わり(Webサイトの挨拶）//
+// ①ホームページ//★★★
+
+// ②aboutページ//
+#about {
+  margin: 5rem 10rem;
+  text-align: center;
+  @include mq('sp') {
+    margin: 5rem 3rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 5rem;
+    border-bottom: 1px solid #d1d1d1;
+    @include mq('sp') {
+      font-size: 4rem;
+    }
+  }
+    // 共通 //
+  h2 {
+  font-size: 3rem;
+  margin: 5rem 0;
+  @include mq('sp') {
+    margin: 3rem 0;
+  }
+  }
+
+  // Miho Yamagata //
+  .profile { 
+    margin-top: 10rem;
+    @include mq('sp') {
+      margin-top: 5rem;
+    }
+
+    img {
+      @include mq('sp') {
+        max-width: 100%;
+      }
+    }
+        
+    p {
+      line-height: 4rem;
+      @include mq('sp') {
+        font-size: 1.6rem;
+        line-height: 3rem;
+      }
+    } 
+  }
+
+  // Career //
+  .career {
+    margin-top: 10rem;
+    @include mq('sp') {
+      margin-top: 5rem;
+    }
+    table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    
+
+      tr:nth-child(odd) {
+        background-color:  #ddd; 
+      }
+      th,td {
+        padding: 3rem 5rem;
+        text-align: left;
+        font-size: 1.6rem;
+        @include mq('sp') {
+          padding: 1rem;
+          font-size: 1.6rem;
+          text-align: left;
+        }
+      }
+    }
+  }
+  
+  // What I can do //
+  .skills {
+    margin-top: 10rem;
+    @include mq('sp') {
+      margin-top: 5rem;
+    }
+    ul {
+      display: flex;
+      justify-content: space-around;
+      @include mq('sp') {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 1.6rem;
+        padding-left: 0;
+      }
+
+      li {
+      list-style: none;
+      @include mq('sp') {
+        margin: 0 0.7rem;
+      }
+
+        h3 {
+          font-size: 1.6rem;
+          padding-top: 1rem;
+        }
+      }    
+    }  
+  }
+  // Service //
+  .service {
+    margin-top: 10rem;
+    @include mq('sp') {
+      margin-top: 5rem;
+    }
+
+    p {
+      line-height: 4rem;
+      @include mq('sp') {
+        font-size: 1.6rem;
+        line-height: 3rem;
+      }
+    }
+
+    a {
+      margin: 3rem 0;
+      @include btn;
+      @include btn-txt;
+      &:hover {
+        @include btn-hover;
+      }
+    }
+  }
+}
+// ②Aboutページ //
+
+// ③Worksページ //
+#myworks { 
+  margin: 5rem 10rem;
+  text-align: center;
+  @include mq('sp') {
+    margin: 5rem 3rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 5rem;
+    border-bottom: 1px solid #d1d1d1;
+    @include mq('sp') {
+      font-size: 4rem;
+    }
+  }
+  
+  img {
+    max-width: 100%;
+    margin-top: 10rem;
+    @include mq('sp') {
+      margin-top: 5rem;
+    }
+    
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin: 1rem;
+  }
+
+  .googlebtn {
+    margin-top: 10rem;
+    @include btn;
+    @include btn-txt;
+    @include mq('sp') {
+        margin-top: 5rem;
+    &:hover {
+      @include btn-hover;
+      
+      }
+    }
+  }
+}
+// ③Worksページ //
+
+// ④Contact ページ //
+#contact {
+  margin: 5rem 10rem;
+  @include mq('sp') {
+    margin: 5rem 3rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 5rem;
+    border-bottom: 1px solid #d1d1d1;
+    @include mq('sp') {
+      font-size: 4rem;
+    }
+  }
+
+  // 問合せに関しての最初の説明 //
+  .explain {
+  margin-top: 5rem;
+  font-size: 1.6rem;
+  line-height: 3rem;
+  }
+  
+  .twitter {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    line-height: 3rem;
+  }
+ //問合せに関しての説明 // 
+
+//  名前・メール・問合せ種別　フォーム//
+  .topic {
+    margin-top: 5rem;
+    font-size: 1.6rem;
+  }
+
+  .type {
+    .your-name {
+      input {
+        height: 5rem;
+        width: 100%;
+        background-color: lightgray;
+        border: none;
+        font-size: 1.6rem;
+        
+      }  
+    }
+    .your-email {
+      input {
+        height: 5rem;
+        width: 100%;
+        background-color: lightgray;
+        border: none;
+        font-size: 1.6rem;
+      }  
+    }
+    label {
+      margin-left: 0.5rem;
+      font-size: 1.6rem;
+    } 
+    
+    span {
+      font-size: 1.6rem;
+    }
+  }
+  // 名前・メール・問合せ種別　フォーム//
+
+  // 問合せ内容 フォーム//
+    .your-message {
+      textarea {
+        height: 20rem;
+        width: 100%;
+        background-color: lightgray;
+        border: none;
+        font-size: 1.6rem;
+      }  
+    }
+  // 問合せ内容 フォーム//
+
+  // 送信ボタン //
+  .send {
+    input {
+      @include btn; 
+      width: 12rem;
+      height: 5rem;
+      @include btn-txt;
+      font-size: 1.6rem;
+      &:hover {
+        @include btn-hover;
+      }
+    }
+    
+  }
+  // 送信ボタン //
+}
+
+// ⑤ブログ投稿ページ （記事一覧）//
+#blog {
+  margin: 5rem 10rem;
+  text-align: center;
+  @include mq('sp') {
+    margin: 5rem 3rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 5rem;
+    border-bottom: 1px solid #d1d1d1;
+    @include mq('sp') {
+      font-size: 4rem;
+    }
+  }
+
+  h2 {
+    font-size: 3rem;
+    @include mq('sp') {
+    font-size: 2rem;
+    }
+  }
+  
+  .row {
+    margin: 3rem 0;
+
+    p {
+      font-size: 1.6rem;
+      line-height: 3rem;
+    }
+
+    a {
+      &:hover {
+        transition: 0.7s;
+        box-shadow: 0 2px 10px 0 #9E9E9E;
+        opacity: 0.7;    
+      }
+    }
+
+    .category-btn {
+      text-align: left;
+      
+      a {
+        text-align: center;
+        @include btn-mini;
+        @include btn-txt-mini;
+        &:hover {
+          @include btn-hover;
+        }
+      }
+    }  
+  }
+  // ページネーション
+  .navigation {
+    background-color: #ffffff;
+
+    // Screen Reader Textを非表示にする ※デフォルトでテキストが入る//
+    .screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+    }
+    
+    .nav-links {
+      margin: 0 auto;
+      font-size: 1.5rem;
+
+      .page-numbers {
+        padding: 0.5rem 1rem;
+        border: 1px solid #9E9E9E;
+      }
+      
+      .current {
+        color: #212529;
+      }
+      a {
+        color: #9E9E9E;
+        text-decoration: none;
+      }
+    }
+    
+  }
+}
+// ⑤ブログ投稿ページ （記事一覧）//
+
+//　⑥ブログページ 単記事表示ページ//
+#single {
+  margin: 5rem 10rem;
+  text-align: left;
+  @include mq('sp') {
+    margin: 5rem 1rem;
+  }
+
+
+  h1 {
+    font-size: 5rem;
+    text-align: center;
+    @include mq('sp') {
+      font-size: 4rem;
+    }
+  }
+
+
+  .sub {
+      text-align: center;
+    a {
+      @include btn-mini;
+      @include btn-txt-mini;
+      &:hover {
+        @include btn-hover;
+      }
+    } 
+
+  }
+    
+  .category {
+    font-size: 2.5rem;
+    text-align: center;
+
+    h4 {
+      font-size: 3rem;
+    }
+
+    ul {
+      padding-left: 1rem;
+      
+      li {
+        list-style: none;
+        border-bottom: 1px dashed #CCCCCC;
+        margin-top: 1rem;
+      }
+      
+    }
+      
+    a {
+      @include category;
+
+      &:hover {
+        @include category-hover;
+      }
+
+    }
+
+  }
+
+}
+//　⑥ブログページ 単記事表示ページ//
